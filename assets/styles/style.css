@@ -1,0 +1,248 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
+
+body {
+  display: table;
+  width: 100%;
+  background: #dedede;
+  text-align: center;
+}
+
+* {
+  /* Safari/Chrome, other WebKit */
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+}
+
+.aa_h2 {
+  font: 100 5rem/1 Roboto;
+  text-transform: uppercase;
+}
+
+table {
+  background: #fff;
+}
+
+table, thead, tbody, tfoot, tr, td, th {
+  text-align: center;
+  margin: auto;
+  padding: 1rem;
+  /*width: 80%;*/
+  font: 92 14px Roboto;
+  font-weight: 500;
+}
+
+.table {
+  display: table;
+  width: 50%;
+}
+
+.tr {
+  display: table-row;
+}
+
+.thead {
+  display: table-header-group;
+}
+
+.tbody {
+  display: table-row-group;
+}
+
+.tfoot {
+  display: table-footer-group;
+}
+
+.col {
+  display: table-column;
+}
+
+.colgroup {
+  display: table-column-group;
+}
+
+.td, .th {
+  display: table-cell;
+  width: 50%;
+}
+
+.caption {
+  display: table-caption;
+}
+
+.table,
+.thead,
+.tbody,
+.tfoot,
+.tr,
+.td,
+.th {
+  text-align: center;
+  margin: auto;
+  padding: 1rem;
+}
+
+.table {
+  background: #fff;
+  margin: auto;
+  border: none;
+  padding: 0;
+  margin-bottom: 5rem;
+}
+
+.th {
+  font-weight: 700;
+  border: 1px solid #dedede;
+}
+.th:nth-child(odd) {
+  border-right: none;
+}
+
+.td {
+  font-weight: 300;
+  border: 1px solid #dedede;
+  border-top: none;
+}
+.td:nth-child(odd) {
+  border-right: none;
+}
+
+table tr td:nth-child(6) {
+    width: 250px;
+}
+
+table th:nth-child(6) {
+    width: 250px;
+}
+
+.aa_htmlTable {
+  padding: 5rem;
+  display: table;
+  width: 100%;
+  height: 100vh;
+  vertical-align: middle;
+}
+
+.aa_css {
+  background: skyblue;
+  padding: 5rem;
+  display: table;
+  width: 100%;
+  height: 100vh;
+  vertical-align: middle;
+}
+
+.aa_ahmadawais {
+  display: table;
+  width: 100%;
+  font: 100 1.2rem/2 Roboto;
+  margin: 5rem auto;
+}
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase
+}
+
+.navbar .nav {
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1.2rem
+}
+
+.navbar-inverse {
+  background-color: #003300
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-nav>li>a:focus {
+  background-color: #002200
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus {
+  background-color: #003300
+}
+
+.dropdown-menu {
+  background-color: #006B00
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  background-color: #002200
+}
+
+.navbar-inverse {
+  background-image: none;
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  background-image: none;
+}
+
+.navbar-inverse {
+  border-color: #003300
+}
+
+.navbar-inverse .navbar-brand {
+  color: #FFFFFF
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color: #FFCC00
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-nav>li>a:focus {
+  color: #FFCC00
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus {
+  color: #FFCC00
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus {
+  color: #FFCC00
+}
+
+.dropdown-menu>li>a {
+  color: #FFFFFF
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+  color: #FFCC00
+}
+
+.navbar-inverse .navbar-nav>.dropdown>a .caret {
+  border-top-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav>.dropdown>a:hover .caret {
+  border-top-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav>.dropdown>a .caret {
+  border-bottom-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav>.dropdown>a:hover .caret {
+  border-bottom-color: #FFFFFF
+}

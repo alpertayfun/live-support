@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bot - Bol Cevapp</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--STYLES-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css" />
+    <style type="text/css">
+      .switch {
+  --line: #E8EBFB;
+  --dot: #275EFE;
+  --circle: #D3D4EC;
+  --background: #fff;
+  --duration: .3s;
+  --text: #9EA0BE;
+  --shadow: 0 1px 3px rgba(0, 9, 61, 0.08);
+  cursor: pointer;
+  position: relative;
+}
+.switch:before {
+  content: '';
+  width: 60px;
+  height: 32px;
+  border-radius: 16px;
+  background: var(--background);
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-shadow: var(--shadow);
+}
+.switch input {
+  display: none;
+}
+.switch input + div {
+  position: relative;
+}
+.switch input + div:before, .switch input + div:after {
+  --s: 1;
+  content: '';
+  position: absolute;
+  height: 4px;
+  top: 14px;
+  width: 24px;
+  background: var(--line);
+  -webkit-transform: scaleX(var(--s));
+          transform: scaleX(var(--s));
+  -webkit-transition: -webkit-transform var(--duration) ease;
+  transition: -webkit-transform var(--duration) ease;
+  transition: transform var(--duration) ease;
+  transition: transform var(--duration) ease, -webkit-transform var(--duration) ease;
+}
+.switch input + div:before {
+  --s: 0;
+  left: 4px;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+  border-radius: 2px 0 0 2px;
+}
+.switch input + div:after {
+  left: 32px;
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  border-radius: 0 2px 2px 0;
+}
+.switch input + div span {
+  padding-left: 60px;
+  line-height: 28px;
+  color: var(--text);
+}
+.switch input + div span:before {
+  --x: 0;
+  --b: var(--circle);
+  --s: 4px;
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 var(--s) var(--b);
+  -webkit-transform: translateX(var(--x));
+          transform: translateX(var(--x));
+  -webkit-transition: box-shadow var(--duration) ease, -webkit-transform var(--duration) ease;
+  transition: box-shadow var(--duration) ease, -webkit-transform var(--duration) ease;
+  transition: box-shadow var(--duration) ease, transform var(--duration) ease;
+  transition: box-shadow var(--duration) ease, transform var(--duration) ease, -webkit-transform var(--duration) ease;
+}
+.switch input + div span:not(:empty) {
+  padding-left: 68px;
+}
+.switch input:checked + div:before {
+  --s: 1;
+}
+.switch input:checked + div:after {
+  --s: 0;
+}
+.switch input:checked + div span:before {
+  --x: 28px;
+  --s: 12px;
+  --b: var(--dot);
+}
+
+body .switch + .switch {
+  margin-top: 32px;
+}
+body .dribbble {
+  position: fixed;
+  display: block;
+  right: 20px;
+  bottom: 20px;
+}
+body .dribbble img {
+  display: block;
+  height: 28px;
+}
+
+@-webkit-keyframes infrontAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes infrontAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.show-row {
+    visibility: visible;
+    opacity:0;
+    animation: infrontAnimation 0s 500ms forwards ease-out;
+    -webkit-animation: infrontAnimation 0s 500ms forwards ease-out;
+}
+.hide {
+    opacity: 0; 
+    visibility:hidden;
+}
+
+    </style>
+    <!--STYLES END-->
+  </head>
+
+  <body>
+
+    <%- include nav %>
+    <%- body %>
+
+    <!--SCRIPTS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script type="text/javascript">
+      function createCookie(name, value, days) {
+          var expires;
+
+          if (days) {
+              var date = new Date();
+              date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+              expires = "; expires=" + date.toGMTString();
+          } else {
+              expires = "";
+          }
+          document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+      }
+
+      function readCookie(name) {
+          var nameEQ = encodeURIComponent(name) + "=";
+          var ca = document.cookie.split(';');
+          for (var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) === ' ')
+                  c = c.substring(1, c.length);
+              if (c.indexOf(nameEQ) === 0)
+                  return decodeURIComponent(c.substring(nameEQ.length, c.length));
+          }
+          return null;
+      }
+
+      function eraseCookie(name) {
+          createCookie(name, "", -1);
+      }
+
+      $('#sendMessageToUser').submit(function( event ) {
+          var token = readCookie("token");
+          var jsonT = { token:token, message:$("#message").val(),cacheKey:$("#cacheKey").val() };
+          console.log(jsonT);
+          event.preventDefault();
+          io.socket.post('/api/sendMessageToUser', jsonT ,function (obj) {
+              console.log(obj);
+              if(obj.errorCode=="00"){
+                  $("#message").val(""); 
+                  document.getElementById("message").focus();
+                  var table = document.getElementById("detailChatTable");
+                  var row = table.insertRow(0);
+                  row.id = obj.created.id;
+                  var cell1 = row.insertCell(0);
+                  var cell2 = row.insertCell(1);
+                  var cell3 = row.insertCell(2);
+                  cell1.innerHTML = '<img src="images/'+obj.created.from+'.png" style="width: 37px;">';
+                  cell2.innerHTML = obj.created.message;
+                  cell3.innerHTML = moment(obj.created.createdAt).format('YYYY-MM-DD HH:mm:ss');
+
+                  row.className = "hide";
+                  $("#"+obj.created.id+"").addClass('show-row').removeClass('hide');
+
+              }     
+          });
+      });
+
+      $('textarea').keyup(function (evt) {
+        if (evt.keyCode == 13) {
+          if (evt.shiftKey){
+              var token = readCookie("token");
+              var jsonT = { token:token, message:$("#message").val(),cacheKey:$("#cacheKey").val() };
+              console.log(jsonT);
+              $("#message").val("");
+              document.getElementById("message").focus();
+              event.preventDefault();
+              io.socket.post('/api/sendMessageToUser', jsonT ,function (obj) {
+                  console.log(obj);
+                  if(obj.errorCode=="00"){
+                      
+                      var table = document.getElementById("detailChatTable");
+                      var row = table.insertRow(0);
+                      row.id = obj.created.id;
+                      var cell1 = row.insertCell(0);
+                      var cell2 = row.insertCell(1);
+                      var cell3 = row.insertCell(2);
+                      cell1.innerHTML = '<img src="images/'+obj.created.from+'.png" style="width: 37px;">';
+                      cell2.innerHTML = obj.created.message;
+                      cell3.innerHTML = moment(obj.created.createdAt).format('YYYY-MM-DD HH:mm:ss');
+
+                      row.className = "hide";
+                      $("#"+obj.created.id+"").addClass('show-row').removeClass('hide');
+
+                  }     
+              });
+          }
+        }
+      });
+
+      $('#logout').click(function( event ) {
+          $.ajax({
+            type: "POST",
+            url: "/api/logoutBackOffice",
+            data: JSON.stringify({ token:$("#token").val()}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+              console.log(data);
+              if(data.errorCode=="00"){
+                eraseCookie("token");
+                window.location.href = "/login";
+              }
+            },
+            failure: function(errMsg) {
+              console.log(errMsg);
+            }
+          });
+          event.preventDefault();
+      });
+    </script>
+    <script>
+      $(function() {
+        document.getElementById("message").focus();
+        var token = readCookie("token");
+
+        $('#botActive').change(function() {
+          if($(this).prop('checked')==false){
+            var jsonT = { token:token, botActive:"0",cacheKey:$("#cacheKey").val() };
+          }else{
+            var jsonT = { token:token, botActive:"1",cacheKey:$("#cacheKey").val() };
+          }
+
+          io.socket.post('/api/setBotActive', jsonT ,function (resData) {
+              console.log(resData);    
+          });
+        });
+        
+        var jsonT = { token:token,cacheKey:$("#cacheKey").val() };
+        io.socket.post('/api/joinChatBackOffice', jsonT ,function (resData) {
+            console.log(resData);        
+        });
+
+        io.socket.post('/api/getChatBackOffice', jsonT ,function (resData) {
+            console.log(resData);
+            
+        });
+
+        
+        
+        io.socket.on('incomingFromUser',function(obj){
+            console.log(obj);
+            if(obj.errorCode=="00"){
+              var table = document.getElementById("detailChatTable");
+              var row = table.insertRow(0);
+              row.id = obj.returned.id;
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              var cell3 = row.insertCell(2);
+              cell1.innerHTML = '<img src="images/'+obj.returned.from+'.png" style="width: 37px;">';
+              cell2.innerHTML = obj.returned.message;
+              cell3.innerHTML = moment(obj.returned.createdAt).format('YYYY-MM-DD HH:mm:ss');
+              row.className = "hide";
+              $("#"+obj.returned.id+"").addClass('show-row').removeClass('hide');
+            }
+        });
+
+        io.socket.on('incomingFromSystem',function(obj){
+            console.log(obj);
+            if(obj.errorCode=="00"){
+              var table = document.getElementById("detailChatTable");
+              var row = table.insertRow(0);
+              row.id = obj.created.id;
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              var cell3 = row.insertCell(2);
+              cell1.innerHTML = '<img src="images/'+obj.returned.from+'.png" style="width: 37px;">';
+              cell2.innerHTML = obj.returned.message;
+              cell3.innerHTML = moment(obj.returned.createdAt).format('YYYY-MM-DD HH:mm:ss');
+              row.className = "hide";
+              $("#"+obj.returned.id+"").addClass('show-row').removeClass('hide');
+
+            }
+        });
+
+
+        io.socket.on('incomingFromAgent',function(obj){
+            console.log(obj);
+            if(obj.errorCode=="00"){
+              var table = document.getElementById("detailChatTable");
+              var row = table.insertRow(0);
+              row.id = obj.created.id;
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              var cell3 = row.insertCell(2);
+              cell1.innerHTML = '<img src="images/'+obj.returned.from+'.png" style="width: 37px;">';
+              cell2.innerHTML = obj.returned.message;
+              cell3.innerHTML = moment(obj.returned.createdAt).format('YYYY-MM-DD HH:mm:ss');
+              row.className = "hide";
+              $("#"+obj.returned.id+"").addClass('show-row').removeClass('hide');
+
+            }
+        });
+
+      })
+    </script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

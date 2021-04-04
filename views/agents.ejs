@@ -1,0 +1,33 @@
+<div class="aa_htmlTable">
+  <h2 class="aa_h2">Temsilciler</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>İsmi</th>
+        <th>E-posta</th>
+        <th>Yaratılma Tarih</th>
+        <th>Durumu</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% theAgents.forEach(function(data) { %>
+		 <tr>
+          <td><a href="agentsdetail?id=<%= data.agentId %>"><%= data.name %></a></td>
+          <td><%= data.email %></td>
+          <td><%= moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss') %></td>
+          <% if (data.status=="1") { %>
+          <td><span class="btn btn-success">Açık</span></td>
+          <% }else if (data.status=="2"){ %>
+          <td><span class="btn btn-success">Bloklu</span></td>
+          <% }else{ %>
+          <td><span class="btn btn-success">Kapalı</span></td>
+          <% } %>  
+        </tr>
+		<% }) %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+</div>
+
+

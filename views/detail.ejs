@@ -1,0 +1,57 @@
+<div style="margin-top: 70px;width: 100%;text-align: right;padding-right: 20px;font-family: 'Open Sans', sans-serif;/* text-transform: uppercase; */letter-spacing: 3px;font-size: 2.2rem;">
+  Bot : 
+    <label class="switch">
+          <% if (detail.isBotActive=="1") { %>
+                  <input type="checkbox" id="botActive" checked>
+          <% }else{ %>
+                  <input type="checkbox" id="botActive">
+          <% }%>
+        <div>
+            <span></span>
+        </div>
+    </label>
+</div>
+<div class="row">
+        <div class="col-md-4" style="text-align: left;padding-left: 30px;">
+          <form id="sendMessageToUser">
+            <input type="hidden" name="cacheKey" id="cacheKey" value="<%= ids %>">
+            <div class="form-group" style="margin-top:20px;">
+              <label for="exampleFormControlTextarea1">Mesaj</label>
+              <textarea class="form-control" id="message" rows="4"></textarea>
+            </div>
+            <button class="btn btn-success">Gönder</button>
+          </form>
+        </div>
+        <div class="col-md-8"><div class="aa_htmlTable" style="padding: 1.3rem;">
+  <table style="width: 100%" >
+    <thead>
+      <tr>
+        <th>Kimden</th>
+        <th>Mesaj</th>
+        <th>Tarih</th>
+      </tr>
+    </thead>
+    <tbody id="detailChatTable">
+    <% if (typeof theChatRooms !== 'undefined' && theChatRooms.length > 0) { %>
+          <% theChatRooms.forEach(function(data) { %>
+            <tr id="<%- data.id %>">
+              <td><img src="images/<%= data.from %>.png" style="width: 37px;"></td>
+              <td><%- data.messages %></td>
+              <td><%= data.time %></td>
+           </tr>
+          <% }) %>
+    <% }else{ %>
+          
+    <% }%>
+
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+</div></div>
+</div>
+
+
+
+
+

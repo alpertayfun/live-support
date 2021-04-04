@@ -1,0 +1,52 @@
+<div class="aa_htmlTable">
+  <h2 class="aa_h2">Geçmiş Konuşmalar</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>cacheKey</th>
+        <th>ip/şehir/ülke</th>
+        <!--<th>status</th>-->
+        <th>işletim sistemi</th>
+        <th>tarayıcı</th>
+        <th>cihaz</th>
+        <th>tarih</th>
+        <th>alan adı</th>
+      </tr>
+    </thead>
+    <tbody>
+          <% if (typeof theChatRooms !== 'undefined' && theChatRooms.length > 0) { %>
+    	<% theChatRooms.forEach(function(data) { %>
+		 <tr>
+	        <td><a href="Historychatsdetail?id=<%= data.cacheKey %>"><%= data.cacheKey %></a></td>
+	        <td><%= data.headers["cf-connecting-ip"] %><br>
+          / <%= data.ipInfo._city %><br>
+          / <%= data.ipInfo._country %></td>
+	        <!--<td><%= data.status %></td>-->
+	        <td><img src="images/<%= data.os %>.png" style="width: 37px;"></td>
+	        <td><img src="images/<%= data.browser %>.png" style="width: 37px;"></td>
+	        <td><img src="images/<%= data.device %>.png" style="width: 37px;"></td>
+	        <td><%= data.time %></td>
+	        <td><%= data.origin %></td>
+	     </tr>
+		<% }) %>
+     <% }else{ %>
+          <tr>
+            <td colspan="7">Herhangi bir kayıt bulunamadı.</td>
+          </tr>
+    <% }%>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="text-align: right;">Total : <%= theChatRooms.length %></td>
+       </tr>
+    </tfoot>
+  </table>
+</div>
+
+

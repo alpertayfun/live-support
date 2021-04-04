@@ -1,0 +1,29 @@
+<div class="aa_htmlTable">
+  <h2 class="aa_h2">Api Anahtarları</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>companyId</th>
+        <th>status</th>
+        <th>api key</th>
+        <th>api expire</th>
+        <th>time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% theChatRooms.forEach(function(data) { %>
+     <tr>
+          <td><a href="usersdetail?id=<%= data.companyId %>"><%= data.companyId %></a></td>
+          <td><span class="btn btn-success"><%= data.statusName %></span></td>
+          <td><%= data.apiKey %></td>
+          <td><%= data.expireTime %></td>
+          <td><%= data.time %></td>
+       </tr>
+    <% }) %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+</div>
+
+

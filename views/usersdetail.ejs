@@ -1,0 +1,35 @@
+<div class="aa_htmlTable">
+  <h2 class="aa_h2">Şirket Detayı</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Şirket Kimlik No</th>
+        <th>Durumu</th>
+        <th>İsim</th>
+        <th>E-post</th>
+        <th>Api Anahtarı</th>
+        <th>A.A. Bitme Zamanı</th>
+        <th>Yaratılma Tarih</th>
+        <th>Toplam Aktif Konuşmalar</th>
+        <th>Toplam Temsilci</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr>
+          <td><%= theCompanys.companyId %></td>
+          <td><span class="btn btn-success"><%= theCompanys.statusName %></span></td>
+          <td><%= theCompanys.name %></td>
+          <td><%= theCompanys.email %></td>
+          <td><%= theCompanys.apiKey %></td>
+          <td><%= theCompanys.expireTime %></td>
+          <td><%= theCompanys.time %></td>
+          <td><%= theCompanys.total %></td>
+          <td><%= theCompanys.totalagents %></td>
+       </tr>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+</div>
+
+
