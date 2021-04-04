@@ -1,10 +1,14 @@
 # live-support
 
-Sails.js based live-support system. 
+# What?
+Sails.js based open source live-support system. 
 
-Get repo first. 
-Install all dependencies. 
-And add your code snip into your website live down below : 
+# How?
+- Pull repo first. 
+- Install all dependencies. 
+- Run with Sails.js.
+- Create new api key. 
+- And add your code snip into your website live down below : 
 
  <!--Start of Live-Support Script-->
     <script type="text/javascript">
@@ -24,5 +28,9 @@ And add your code snip into your website live down below :
       })();
     </script>
     <!--End of Live-Support Script-->
+
+# Help
+
+Help me if you want. 🎉
 
 a [Sails](http://sailsjs.org) application
